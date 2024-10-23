@@ -1,43 +1,76 @@
-.App {
-  text-align: center;
+/* App.css */
+.container {
   display: flex;
-  flex-direction: column;
   height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Left Sidebar */
+.left-sidebar {
+  width: 20%;
+  background-color: #f4f4f4;
+  padding: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#template-variables-section {
+  margin-bottom: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#blocks-section {
+  margin-top: 20px;
+}
+
+/* Center (Editor) */
+.editor-container {
+  width: 60%;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+/* Right Sidebar */
+.right-sidebar {
+  width: 20%;
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+
+#right-sidebar h2 {
+  margin-bottom: 10px;
+}
+/* App.css */
+.container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+/* Left Sidebar */
+.left-sidebar {
+  width: 20%;
+  background-color: #f4f4f4;
+  padding: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#template-variables-section {
+  margin-top: 20px;
 }
+
+/* Center Editor */
+.editor-container {
+  width: 60%;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+/* Right Sidebar */
+.right-sidebar {
+  width: 20%;
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+
+#right-sidebar h2 {
+  margin-bottom: 10px;
+}
+
+
 
 

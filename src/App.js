@@ -1,44 +1,86 @@
 import React from 'react';
-import GjsEditor from '@grapesjs/react'; // Import the GjsEditor component
+import GjsEditor from '@grapesjs/react'; // Import GjsEditor component
 import 'grapesjs/dist/css/grapes.min.css'; // GrapesJS default styles
 import './App.css'; // Your custom styles
 
 function App() {
+  // Editor options for GrapesJS
   const gjsOptions = {
-    container: '#gjs', // Container for GrapesJS editor
+    container: '#gjs',
     height: '100vh',
-    width: '100%',
+    width: 'auto',
     storageManager: { autoload: false }, // Disable autoload for now
+    blockManager: {
+      appendTo: '#blocks', // Blocks will be added in the left sidebar
+    },
+    styleManager: {
+      appendTo: '#right-sidebar', // Right sidebar for traits and properties
+    },
   };
 
+  // Callback when the editor is initialized
   const onEditor = (editor) => {
     console.log('GrapesJS editor initialized:', editor);
+    // Example block addition
+    editor.BlockManager.add('text-block', {
+      label: 'Text',
+      content: '<p>Insert your text here</p>',
+    });
   };
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>Smart Contract Interface Builder</h1>
-        <GjsEditor
-          id="gjs"
-          className="gjs-custom-editor overflow-y-hidden text-black bg-[#F7F9F6]"
-          grapesjs="https://unpkg.com/grapesjs"
-          grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
-          options={gjsOptions}
-          plugins={[
-            {
-              id: 'gjs-blocks-basic',
-              src: 'https://unpkg.com/grapesjs-blocks-basic',
-            },
-            {
-              id: 'grapesjs-rulers',
-              src: 'https://unpkg.com/grapesjs-rulers',
-            },
-            // LoadOverrides and TraitManager should be defined or imported here
-          ]}
-          onEditor={onEditor}
-        />
       </header>
+
+      <div className="container">
+        {/* Left Sidebar for Blocks and Template Variables */}
+        <aside className="left-sidebar">
+          <div id="blocks-section">
+            <h2>Blocks</h2>
+            <div id="blocks"></div> {/* GrapesJS will append blocks here */}
+          </div>
+
+          <div id="template-variables-section">
+            <h2>Template Variables</h2>
+            <button className="add-variable">+ New Variable</button>
+            <div className="variables">
+              <p>No variables added yet.</p>
+            </div>
+          </div>
+        </aside>
+
+        {/* GrapesJS Editor Component */}
+        <main className="editor-container">
+          <GjsEditor
+            id="gjs"
+            className="gjs-custom-editor overflow-y-hidden text-black bg-[#F7F9F6]"
+            grapesjs="https://unpkg.com/grapesjs"
+            grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+            options={gjsOptions}
+            plugins={[
+              {
+                id: 'gjs-blocks-basic',
+                src: 'https://unpkg.com/grapesjs-blocks-basic',
+              },
+              {
+                id: 'grapesjs-rulers',
+                src: 'https://unpkg.com/grapesjs-rulers',
+              },
+            ]}
+            onEditor={onEditor}
+          />
+        </main>
+
+        {/* Right Sidebar for Properties */}
+        <aside className="right-sidebar">
+          <div id="right-sidebar">
+            <h2>Properties</h2>
+            {/* Traits and style properties will be appended here by GrapesJS */}
+          </div>
+        </aside>
+      </div>
     </div>
   );
 }
