@@ -42,13 +42,7 @@ function App() {
             <div id="blocks"></div> {/* GrapesJS will append blocks here */}
           </div>
 
-          <div id="template-variables-section">
-            <h2>Template Variables</h2>
-            <button className="add-variable">+ New Variable</button>
-            <div className="variables">
-              <p>No variables added yet.</p>
-            </div>
-          </div>
+         
         </aside>
 
         {/* GrapesJS Editor Component */}
@@ -68,6 +62,7 @@ function App() {
                 id: 'grapesjs-rulers',
                 src: 'https://unpkg.com/grapesjs-rulers',
               },
+              
             ]}
             onEditor={onEditor}
           />
