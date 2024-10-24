@@ -2,6 +2,11 @@ import React from 'react';
 import GjsEditor from '@grapesjs/react'; // Import GjsEditor component
 import 'grapesjs/dist/css/grapes.min.css'; // GrapesJS default styles
 import './App.css'; // Your custom styles
+import Button from './File/Button.ts';
+import TextInput from './File/Textinput.ts';
+import Dropdown from './File/Dropdown.ts';
+import DatePicker from './File/Datepicker.ts';
+import FileUpload from './File/Fileupload.ts';
 
 function App() {
   // Editor options for GrapesJS
@@ -62,7 +67,11 @@ function App() {
                 id: 'grapesjs-rulers',
                 src: 'https://unpkg.com/grapesjs-rulers',
               },
-              
+              Button,
+              TextInput,
+              Dropdown,
+              DatePicker,
+              FileUpload
             ]}
             onEditor={onEditor}
           />
