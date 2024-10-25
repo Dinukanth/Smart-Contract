@@ -9,6 +9,7 @@
   width: 20%;
   background-color: #f4f4f4;
   padding: 10px;
+  margin-top: 50px;
 }
 
 #template-variables-section {
@@ -31,6 +32,7 @@
   width: 20%;
   background-color: #f4f4f4;
   padding: 10px;
+  margin-top: 50px;
 }
 
 #right-sidebar h2 {
@@ -97,4 +99,38 @@
   height: 200px;
 
 }
+
+.gjs-pn-views-container {
+  
+  background-color: #ffffff !important;
+ 
+}
+
+.gjs-clm-tags{
+  display: none !important;
+}
+
+.gjs-sm-header{
+  display: none !important;
+}
+
+.gjs-pn-buttons {
+  display: flex !important;                          
+  justify-content: space-between !important;         
+  width: calc(100% - 500px) !important;              
+  height: 50px !important;                           
+  margin: 0 250px !important;                        
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gjs-pn-buttons {
+      width: calc(100% - 50px) !important;          
+      margin: 0 25px !important;                     
+  }
+}
+
+
+
+
 
