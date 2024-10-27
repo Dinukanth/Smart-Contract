@@ -1,91 +1,119 @@
-import React from 'react';
-import GjsEditor from '@grapesjs/react'; // Import GjsEditor component
-import 'grapesjs/dist/css/grapes.min.css'; // GrapesJS default styles
-import './App.css'; // Your custom styles
-import Button from './File/Button.ts';
-import TextInput from './File/Textinput.ts';
-import Dropdown from './File/Dropdown.ts';
-import DatePicker from './File/Datepicker.ts';
-import FileUpload from './File/Fileupload.ts';
+import React, { useRef } from "react";
+import GjsEditor, {
+  BlocksProvider,
+  Canvas,
+  SelectorsProvider,
+  StylesProvider,
+  TraitsProvider,
+  WithEditor,
+} from "@grapesjs/react"; // Import GjsEditor component
+import "grapesjs/dist/css/grapes.min.css"; // GrapesJS default styles
+import "./App.css"; // Your custom styles
+import Button from "./File/Button.ts";
+import TextInput from "./File/Textinput.ts";
+import Dropdown from "./File/Dropdown.ts";
+import DatePicker from "./File/Datepicker.ts";
+import FileUpload from "./File/Fileupload.ts";
+import grapesjs from "grapesjs";
+import {
+  BlockCategory,
+  PatientInformation_Block,
+} from "./core/Blocks.const.ts";
+import BlockManager from "./components/BlockManager.tsx";
+import { AnimatePresence } from "framer-motion";
+import CanvasToolbar from "./TopToolbar/CanvasToolbar.tsx";
+import PropertiesManager from "./components/PropertiesManager.tsx";
+import RightSideManager from "./components/RightSideManager/index.tsx";
 
 function App() {
+  const containerRef = useRef(null);
+
   // Editor options for GrapesJS
   const gjsOptions = {
-    container: '#gjs',
-    height: '100vh',
-    width: 'auto',
-    storageManager: { autoload: false }, // Disable autoload for now
+    height: "100vh",
+    storageManager: {
+      type: "local",
+      autosave: true,
+      autoload: true,
+      stepsBeforeSave: 1,
+    },
     blockManager: {
-      appendTo: '#blocks', // Blocks will be added in the left sidebar
+      custom: true,
+      blocks: [
+        ...PatientInformation_Block.map((block) => {
+          return {
+            ...block,
+            category: BlockCategory.PatientInformationBlock,
+          };
+        }),
+      ],
     },
-    styleManager: {
-      appendTo: '#right-sidebar', // Right sidebar for traits and properties
+    canvas: {
+      scripts: [
+        "https://cdn.tailwindcss.com",
+        "https://kit.fontawesome.com/ba1a5bd07e.js",
+      ],
+      styles: [""],
     },
-  };
-
-  // Callback when the editor is initialized
-  const onEditor = (editor) => {
-    console.log('GrapesJS editor initialized:', editor);
-    // Example block addition
-    editor.BlockManager.add('text-block', {
-      label: 'Text',
-      content: '<p>Insert your text here</p>',
-    });
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Smart Contract Interface Builder</h1>
-      </header>
-
-      <div className="container">
-        {/* Left Sidebar for Blocks and Template Variables */}
-        <aside className="left-sidebar">
-          <div id="blocks-section">
-            <h2>Blocks</h2>
-            <div id="blocks"></div> {/* GrapesJS will append blocks here */}
+    <>
+      <GjsEditor
+        grapesjs={grapesjs}
+        grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+        options={gjsOptions}
+        plugins={[
+          {
+            id: "gjs-blocks-basic",
+            src: "https://unpkg.com/grapesjs-blocks-basic",
+          },
+          {
+            id: "grapesjs-rulers",
+            src: "https://unpkg.com/grapesjs-rulers",
+          },
+          Button,
+          TextInput,
+          Dropdown,
+          DatePicker,
+          FileUpload,
+        ]}
+      >
+        <CanvasToolbar />
+        <div style={{ display: "flex" }} className="flex">
+          <div style={{ width: 300, backgroundColor: "#f5f5f5" }}>
+            <BlocksProvider>
+              {(props) => <BlockManager props={props} />}
+            </BlocksProvider>
           </div>
-
-         
-        </aside>
-
-        {/* GrapesJS Editor Component */}
-        <main className="editor-container">
-          <GjsEditor
-            id="gjs"
-            className="gjs-custom-editor overflow-y-hidden text-black bg-[#F7F9F6]"
-            grapesjs="https://unpkg.com/grapesjs"
-            grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
-            options={gjsOptions}
-            plugins={[
-              {
-                id: 'gjs-blocks-basic',
-                src: 'https://unpkg.com/grapesjs-blocks-basic',
-              },
-              {
-                id: 'grapesjs-rulers',
-                src: 'https://unpkg.com/grapesjs-rulers',
-              },
-              Button,
-              TextInput,
-              Dropdown,
-              DatePicker,
-              FileUpload
-            ]}
-            onEditor={onEditor}
-          />
-        </main>
-
-        {/* Right Sidebar for Properties */}
-        <aside className="right-sidebar">
-          <div id="right-sidebar">
-            <h2>Properties</h2>
-            {/* Traits and style properties will be appended here by GrapesJS */}
+          <div style={{ flex: 1 }} className="w-full">
+            <div className="rounded-xl relative">
+              <Canvas className="h-[calc(100%-72px)]" />
+            </div>
           </div>
-        </aside>
-      </div>
-    </div>
+          <div style={{ width: 300, backgroundColor: "#f5f5f5" }}>
+            <PropertiesManager />
+            <StylesProvider>
+              {(styleProps) => (
+                <TraitsProvider>
+                  {(traitProps) => (
+                    <SelectorsProvider>
+                      {(selectorProps) => (
+                        <RightSideManager
+                          styleProps={styleProps}
+                          traitProps={traitProps}
+                          selectorProps={selectorProps}
+                        />
+                      )}
+                    </SelectorsProvider>
+                  )}
+                </TraitsProvider>
+              )}
+            </StylesProvider>
+          </div>
+        </div>
+      </GjsEditor>
+    </>
   );
 }
 
