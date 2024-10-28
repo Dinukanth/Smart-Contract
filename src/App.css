@@ -1,4 +1,12 @@
+.gjs-editor .gjs-selected {
+    margin-left: -10px !important;
+    margin-right: -10px !important;
+    background-color: blue;
+}
 
+#ir5o{
+    background-color: red !important;
+}
 
 
 

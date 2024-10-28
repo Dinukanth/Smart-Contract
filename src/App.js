@@ -24,6 +24,7 @@ import { AnimatePresence } from "framer-motion";
 import CanvasToolbar from "./TopToolbar/CanvasToolbar.tsx";
 import PropertiesManager from "./components/PropertiesManager.tsx";
 import RightSideManager from "./components/RightSideManager/index.tsx";
+import './App.css';
 
 function App() {
   const containerRef = useRef(null);
