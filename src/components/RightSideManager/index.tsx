@@ -6,6 +6,6 @@ export default function RightSideManager({
 	selectorProps,
 }) {
   return (
-    <div>index</div>
+    <div className='ml-4' >index</div>
   )
 }

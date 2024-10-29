@@ -8,7 +8,9 @@
     background-color: red !important;
 }
 
-
+element.style{
+    margin-right: 20px !important;
+}
 
 
 

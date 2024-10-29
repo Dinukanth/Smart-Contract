@@ -3,6 +3,7 @@ export enum BlockCategory {
 }
 
 export const PatientInformation_Block = [
+  
   {
     id: "TextInput",
     label: "Text Input",

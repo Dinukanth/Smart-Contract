@@ -6,7 +6,7 @@ export default function PropertiesManager() {
     <>
       <div
         className={cn(
-          "flex m-2 bg-white/10 text-black border flex-col items-center cursor-pointer p-2 transition-colors"
+          "flex m-2 bg-white/10 text-black border flex-col items-center cursor-pointer p-2 transition-colors ml-4"
         )}
       >
         PropertiesManager
