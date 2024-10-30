@@ -1,42 +1,38 @@
 import React from 'react';
-import {
-  HomeIcon,
-  PlusIcon,
-  ChartBarIcon,
-  ArrowTrendingUpIcon, // Replace TrendingUpIcon with ArrowTrendingUpIcon
-  ChartPieIcon,
-  FolderIcon,
-  BoltIcon
-} from '@heroicons/react/24/outline';
+
+// Import images
+import HomeIconImage from '../File/Image/bitbucket.png';
+import ChartBarIconImage from '../File/Image/Chart.png';
+import ArrowTrendingUpIconImage from '../File/Image/Activity.png';
+import ChartPieIconImage from '../File/Image/Chart.png';
+import FolderIconImage from '../File/Image/Layers_light.png';
+import BoltIconImage from '../File/Image/More Circle.png';
 
 const Navbar = () => {
   return (
-    <div className="flex flex-col items-center bg-white p-4 h-screen border-r border-gray-200 space-y-4 ">
+    <div className="flex flex-col items-center bg-white p-4 h-screen border-r border-gray-200 space-y-4">
       {/* Top Icon */}
       <button className="p-2 rounded-full bg-indigo-100">
-        <HomeIcon className="h-8 w-8 text-indigo-500" />
+        <img src={HomeIconImage} alt="Home" className="h-8 w-8" />
       </button>
-
-      {/* <button className="p-3 rounded-full bg-gray-100">
-        <PlusIcon className="h-6 w-6 text-gray-500" />
-      </button> */}
 
       {/* Other Icons */}
       <button className="p-3 rounded-full bg-gray-200">
-        <ChartBarIcon className="h-6 w-6 text-gray-700" />
+        <img src={ChartBarIconImage} alt="Chart Bar" className="h-6 w-6" />
       </button>
       <button className="p-3 rounded-full bg-gray-100">
-        <ArrowTrendingUpIcon className="h-6 w-6 text-gray-500" /> {/* Use ArrowTrendingUpIcon */}
+        <img src={ArrowTrendingUpIconImage} alt="Trending Up" className="h-6 w-6" />
       </button>
       <button className="p-3 rounded-full bg-gray-100">
-        <ChartPieIcon className="h-6 w-6 text-gray-500" />
+        <img src={ChartPieIconImage} alt="Chart Pie" className="h-6 w-6" />
       </button>
       <button className="p-3 rounded-full bg-gray-100">
-        <FolderIcon className="h-6 w-6 text-gray-500" />
+        <img src={FolderIconImage} alt="Folder" className="h-6 w-6" />
       </button>
       <button className="p-3 rounded-full bg-gray-100">
-        <BoltIcon className="h-6 w-6 text-gray-500" />
+        <img src={BoltIconImage} alt="Bolt" className="h-6 w-6" />
       </button>
+      
     </div>
   );
 };

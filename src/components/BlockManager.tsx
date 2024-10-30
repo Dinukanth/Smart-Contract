@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { BlockCategory } from "../core/Blocks.const.ts";
 import BlockSideBarManager from "./BlockSideBarManager.tsx";
-import Navbar from "../File/Navbar.jsx";
 
 export default function BlockManager({ props }) {
   const [selectedBlockGroup, setSelectedBlockGroup] = useState<BlockCategory>(
@@ -19,7 +18,7 @@ export default function BlockManager({ props }) {
       />
     </div>
 
-    <Navbar/>
+ 
 
 
     </>

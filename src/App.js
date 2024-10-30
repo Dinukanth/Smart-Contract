@@ -25,6 +25,7 @@ import CanvasToolbar from "./TopToolbar/CanvasToolbar.tsx";
 import PropertiesManager from "./components/PropertiesManager.tsx";
 import RightSideManager from "./components/RightSideManager/index.tsx";
 import './App.css';
+import Navbar from "./File/Navbar.jsx";
 
 function App() {
   const containerRef = useRef(null);
@@ -82,7 +83,11 @@ function App() {
       >
         <CanvasToolbar />
         <div style={{ display: "flex" }} className="flex">
+        <Navbar/>
+
           <div style={{ width: 300, backgroundColor: "#f5f5f5" }}>
+
+           
             <BlocksProvider>
               {(props) => <BlockManager props={props} />}
             </BlocksProvider>
