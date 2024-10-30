@@ -15,3 +15,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.icon-patient {
+  background: url("./File/Image/Activity.png") no-repeat 50% 50%;
+  position: relative;
+  background-size: 40%;
+}

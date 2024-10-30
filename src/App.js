@@ -5,27 +5,21 @@ import GjsEditor, {
   SelectorsProvider,
   StylesProvider,
   TraitsProvider,
-  WithEditor,
 } from "@grapesjs/react"; // Import GjsEditor component
 import "grapesjs/dist/css/grapes.min.css"; // GrapesJS default styles
 import "./App.css"; // Your custom styles
-import Button from "./File/Button.ts";
-import TextInput from "./File/Textinput.ts";
-import Dropdown from "./File/Dropdown.ts";
-import DatePicker from "./File/Datepicker.ts";
-import FileUpload from "./File/Fileupload.ts";
 import grapesjs from "grapesjs";
 import {
   BlockCategory,
+  ClinicalDocumentation_Block,
+  EncounterRecords_Block,
   PatientInformation_Block,
 } from "./core/Blocks.const.ts";
-import BlockManager from "./components/BlockManager.tsx";
-import { AnimatePresence } from "framer-motion";
+import BlockManager from "./components/BlockManager.jsx";
 import CanvasToolbar from "./TopToolbar/CanvasToolbar.tsx";
 import PropertiesManager from "./components/PropertiesManager.tsx";
 import RightSideManager from "./components/RightSideManager/index.tsx";
-import './App.css';
-import Navbar from "./File/Navbar.jsx";
+import "./App.css";
 
 function App() {
   const containerRef = useRef(null);
@@ -42,10 +36,45 @@ function App() {
     blockManager: {
       custom: true,
       blocks: [
+        ...ClinicalDocumentation_Block.map((block) => {
+          return {
+            ...block,
+            category: {
+              id: BlockCategory.ClinicalDocumentationBlock,
+              open: false,
+              label: BlockCategory.ClinicalDocumentationBlock,
+              attributes: {
+                class: "icon-clinic",
+              },
+            },
+          };
+        }),
+
         ...PatientInformation_Block.map((block) => {
           return {
             ...block,
-            category: BlockCategory.PatientInformationBlock,
+            category: {
+              id: BlockCategory.PatientInformationBlock,
+              open: true,
+              label: BlockCategory.PatientInformationBlock,
+              attributes: {
+                class: "icon-patient",
+              },
+            },
+          };
+        }),
+
+        ...EncounterRecords_Block.map((block) => {
+          return {
+            ...block,
+            category: {
+              id: BlockCategory.EncounterRecordsBlock,
+              open: true,
+              label: BlockCategory.EncounterRecordsBlock,
+              attributes: {
+                class: "icon-patient",
+              },
+            },
           };
         }),
       ],
@@ -65,29 +94,12 @@ function App() {
         grapesjs={grapesjs}
         grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
         options={gjsOptions}
-        plugins={[
-          {
-            id: "gjs-blocks-basic",
-            src: "https://unpkg.com/grapesjs-blocks-basic",
-          },
-          {
-            id: "grapesjs-rulers",
-            src: "https://unpkg.com/grapesjs-rulers",
-          },
-          Button,
-          TextInput,
-          Dropdown,
-          DatePicker,
-          FileUpload,
-        ]}
+        plugins={[]}
       >
         <CanvasToolbar />
         <div style={{ display: "flex" }} className="flex">
-        <Navbar/>
-
+          {/* <Navbar /> */}
           <div style={{ width: 300, backgroundColor: "#f5f5f5" }}>
-
-           
             <BlocksProvider>
               {(props) => <BlockManager props={props} />}
             </BlocksProvider>
