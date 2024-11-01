@@ -26,6 +26,7 @@ import PropertiesManager from "./components/PropertiesManager.tsx";
 import RightSideManager from "./components/RightSideManager/index.tsx";
 import './App.css';
 import Navbar from "./File/Navbar.jsx";
+import Header from "./components/Header.jsx";
 
 function App() {
   const containerRef = useRef(null);
@@ -82,6 +83,7 @@ function App() {
         ]}
       >
         <CanvasToolbar />
+        <Header/>
         <div style={{ display: "flex" }} className="flex">
         <Navbar/>
 
