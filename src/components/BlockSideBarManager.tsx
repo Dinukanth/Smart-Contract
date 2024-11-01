@@ -1,35 +1,55 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { BlocksResultProps } from "@grapesjs/react";
-import { BlockCategory } from "../core/Blocks.const";
 import { cn } from "../common/utils.ts";
+import { BlockCategory } from "../core/Blocks.const.ts";
 
 const BlockSideBarManager = ({
   props,
-  selectedBlockGroup,
+  blockCategories,
 }: {
   props: BlocksResultProps;
-  selectedBlockGroup: BlockCategory;
+  blockCategories;
 }) => {
   const { dragStart, dragStop, blocks } = props;
 
+  const [selectedBlockGroup, setSelectedBlockGroup] = useState({
+    label: BlockCategory.PatientInformationBlock,
+  });
+
   return (
     <>
-      <div className="bg-transparent">
-        <div className="bg-transparent">
-          <div className="bg-transparent py-2 px-2 text-black border bg-slate-200">
-            <motion.div className={cn(" text-black")}>
-              <span className="no-underline">{selectedBlockGroup}</span>
-            </motion.div>
+      <div style={{ height: "100%" }} className="bg-transparent">
+        <div style={{ height: "100%" }} className="bg-transparent flex">
+          <div
+            style={{ width: "80px" }}
+            className="bg-transparent py-2 px-2 text-black border bg-slate-200"
+          >
+            {blockCategories &&
+              blockCategories?.map((block) => (
+                <button
+                  className={`p-3 rounded-full  ${
+                    selectedBlockGroup.label == block.label
+                      ? "bg-indigo-100"
+                      : "bg-gray-100"
+                  }`}
+                  onClick={() => setSelectedBlockGroup(block)}
+                >
+                  <img src={block.media} alt="Home" className="h-8 w-8" />
+                </button>
+              ))}
           </div>
           <div className="bg-transparent px-0 py-0 border-none">
-            <motion.div className="grid grid-cols-2 gap-2">
+            <div className={cn(" text-black text-center")}>
+              <span className="no-underline">{selectedBlockGroup.label}</span>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
               {blocks
                 ?.filter(
-                  (block) => block.getCategoryLabel() == selectedBlockGroup
+                  (block) =>
+                    block.getCategoryLabel() == selectedBlockGroup.label
                 )
                 .map((block) => (
-                  <motion.div
+                  <div
                     key={block.getLabel()}
                     draggable
                     className={cn(
@@ -47,14 +67,14 @@ const BlockSideBarManager = ({
                       }}
                     />
                     <div
-                      className="text-sm text-center w-full py-2 border-t-2" 
+                      className="text-sm text-center w-full py-2 border-t-2"
                       title={block.getLabel()}
                     >
                       {block.getLabel()}
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

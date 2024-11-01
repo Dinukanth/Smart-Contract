@@ -1,14 +1,14 @@
 import React from 'react';
-import { FaDesktop, FaTabletAlt, FaMobileAlt } from 'react-icons/fa'; // Importing icons for devices
+
 
 export default function CanvasToolbar() {
   return (
     <div style={styles.toolbar}>
-      <div style={styles.projectName}>My EMR Project</div>
+      <div style={styles.projectName}>EMR Project</div>
       <div style={styles.deviceIcons}>
-        <FaDesktop style={styles.icon} title="Desktop" />
-        <FaTabletAlt style={styles.icon} title="Tablet" />
-        <FaMobileAlt style={styles.icon} title="Mobile" />
+        <i className="fa fa-mobile" style={styles.icon} />
+        <i className="fa fa-laptop" style={styles.icon} />
+        <i className="fa fa-tablet" style={styles.icon} />
       </div>
       <button style={styles.publishButton}>Publish</button>
     </div>
