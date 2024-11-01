@@ -1,11 +1,9 @@
-import CalendarIcon from '../components/Header/image/mobile_light.png';
 export enum BlockCategory {
   PatientInformationBlock = "Patient Information",
   ClinicalDocumentationBlock = "Clinical Documentation",
   EncounterRecordsBlock = "Encounter Records",
   OrderAndResultsBlock = "Order and Results",
 }
-
 
 export const PatientInformation_Block = [
   {
@@ -25,19 +23,24 @@ export const PatientInformation_Block = [
   },
 
   {
-
-  id: "DatePicker",
-  label: "Date Picker",
-  media: `<img src="${CalendarIcon}" alt="Calendar Icon" width="24" height="24" />`,
-  content: `<input type="date" class="datepicker-field bg-gray-100 border border-gray-300 rounded py-2 px-4" />`,
-},
-
- 
+    id: "DatePicker",
+    label: "Date Picker",
+    media: `<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  width="24"
+  height="24"
+  fill="currentColor"
+>
+  <path d="M7 10h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zM5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v14h14V6H5zm2-2h2V2h2v2h4V2h2v2h2v2H5V4h2z" />
+</svg>`,
+    content: ` <input type="date" class="datepicker-field bg-gray-100 border border-gray-300 rounded py-2 px-4" />`,
+  },
   
 
 
 
-
+  
   {
     id: "Dropdown",
     label: "Dropdown",
