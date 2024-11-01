@@ -1,9 +1,11 @@
+import CalendarIcon from '../components/Header/image/mobile_light.png';
 export enum BlockCategory {
   PatientInformationBlock = "Patient Information",
   ClinicalDocumentationBlock = "Clinical Documentation",
   EncounterRecordsBlock = "Encounter Records",
   OrderAndResultsBlock = "Order and Results",
 }
+
 
 export const PatientInformation_Block = [
   {
@@ -23,19 +25,19 @@ export const PatientInformation_Block = [
   },
 
   {
-    id: "DatePicker",
-    label: "Date Picker",
-    media: `<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 24 24"
-  width="24"
-  height="24"
-  fill="currentColor"
->
-  <path d="M7 10h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zM5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v14h14V6H5zm2-2h2V2h2v2h4V2h2v2h2v2H5V4h2z" />
-</svg>`,
-    content: ` <input type="date" class="datepicker-field bg-gray-100 border border-gray-300 rounded py-2 px-4" />`,
-  },
+
+  id: "DatePicker",
+  label: "Date Picker",
+  media: `<img src="${CalendarIcon}" alt="Calendar Icon" width="24" height="24" />`,
+  content: `<input type="date" class="datepicker-field bg-gray-100 border border-gray-300 rounded py-2 px-4" />`,
+},
+
+ 
+  
+
+
+
+
   {
     id: "Dropdown",
     label: "Dropdown",
@@ -95,6 +97,83 @@ export const PatientInformation_Block = [
       Double click to change text
     </button>`,
   },
+
+
+  {
+    id: "MultiLineText",
+    label: "Multi-Line Text",
+    media: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M3 3h18a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1zm0 2v14h18V5H3zm2 2h14v2H5V7zm0 4h14v2H5v-2zm0 4h14v2H5v-2z"/></svg>`,
+    content: `<textarea class="textarea-field bg-gray-100 border border-gray-300 rounded py-2 px-4" rows="4" placeholder="Enter your text here..."></textarea>`,
+  },
+
+  // Radio Button
+  {
+    id: "RadioButton",
+    label: "Radio Button",
+    media: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg>`,
+    content: `
+      <div class="radio-group">
+        <label class="radio-label inline-flex items-center">
+          <input type="radio" name="radioGroup" value="Option 1" class="radio-input">
+          <span class="ml-2">Option 1</span>
+        </label>
+        <label class="radio-label inline-flex items-center ml-4">
+          <input type="radio" name="radioGroup" value="Option 2" class="radio-input">
+          <span class="ml-2">Option 2</span>
+        </label>
+      </div>
+    `,
+  },
+
+  // Status Indicator
+  {
+    id: "StatusIndicator",
+    label: "Status Indicator",
+    media: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5" fill="white"/></svg>`,
+    content: `
+      <div class="status-indicator flex items-center">
+        <span class="status-dot bg-green-500 w-3 h-3 rounded-full mr-2"></span>
+        <span class="status-text">Active</span>
+      </div>
+    `,
+  },
+
+  // Select Box
+  {
+    id: "SelectBox",
+    label: "Select Box",
+    media: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M5 7h14v2H5zm0 4h14v2H5zm0 4h14v2H5z"/></svg>`,
+    content: `
+      <select class="select-box bg-gray-100 border border-gray-300 rounded py-2 px-4">
+        <option>Select an option</option>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+    `,
+  },
+
+  // Search Bar
+  {
+    id: "SearchBar",
+    label: "Search Bar",
+    media: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.474 6.474 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>`,
+    content: `
+      <div class="search-bar flex items-center border border-gray-300 rounded py-2 px-4 bg-gray-100">
+        <input type="text" class="search-input flex-1 bg-transparent outline-none" placeholder="Search...">
+        <button class="search-btn text-gray-600">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.474 6.474 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        </button>
+      </div>
+    `,
+  },
+
+
+
+  
+
+
+
 ];
 
 export const ClinicalDocumentation_Block = [
