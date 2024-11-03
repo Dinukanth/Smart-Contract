@@ -39,7 +39,7 @@ const BlockSideBarManager = ({
               ))}
           </div>
           <div className="bg-transparent px-0 py-0 border-none">
-            <div className={cn(" text-black text-center")}>
+            <div className="text-black text-center">
               <span className="no-underline">{selectedBlockGroup.label}</span>
             </div>
             <div className="grid grid-cols-2 gap-2">
@@ -52,16 +52,15 @@ const BlockSideBarManager = ({
                   <div
                     key={block.getLabel()}
                     draggable
-                    className={cn(
-                      "flex m-2 bg-white/10 text-black border rounded-2xl flex-col items-center cursor-pointer p-2 transition-colors"
-                    )}
+                    style={{ width: "80px", height: "110px" }}
+                    className=  "flex m-2 bg-white/10 text-black border rounded-2xl flex-col items-center cursor-pointer p-2 transition-colors"
                     onDragStart={(event_: any) => {
                       dragStart(block as any, event_.nativeEvent);
                     }}
                     onDragEnd={() => dragStop(false)}
                   >
                     <div
-                      className="px-5 py-3 items-center"
+                      className="px-4 py-2 items-center"
                       dangerouslySetInnerHTML={{
                         __html: block.getMedia() as string | TrustedHTML,
                       }}
