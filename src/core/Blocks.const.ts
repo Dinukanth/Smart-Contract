@@ -173,6 +173,60 @@ export const PatientInformation_Block = [
 
 
 
+  {
+    id: "PatientForm",
+    label: "Patient Form",
+    media: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 8-8 8z"/>
+            </svg>`,
+    content: `
+      <div class="flex justify-center"> <!-- Center the form on the page -->
+        <form class="space-y-4 text-left w-full max-w-md"> <!-- Restrict form width and keep text left-aligned -->
+          <!-- Gender Dropdown -->
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Gender</label>
+            <select class="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100">
+              <option>Select gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+  
+          <!-- Age Input -->
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Age</label>
+            <input type="number" class="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100" placeholder="Enter patient age" />
+          </div>
+  
+          <!-- Signs and Symptoms Textarea -->
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Signs and Symptoms</label>
+            <textarea class="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100" rows="3" placeholder="Describe patient's signs and symptoms"></textarea>
+          </div>
+  
+          <!-- Findings Textarea -->
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Findings</label>
+            <textarea class="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100" rows="3" placeholder="Provide a description of your findings"></textarea>
+          </div>
+  
+          <!-- Submit Button -->
+          <div>
+            <button type="submit" class="w-full bg-black text-white font-medium py-2 rounded">Get Diagnoses</button>
+          </div>
+        </form>
+      </div>
+    `,
+  }
+  
+  
+  
+
+
+
+
+
   
 
 

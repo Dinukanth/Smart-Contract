@@ -25,7 +25,7 @@ export default function StyleCustom({ sectors }: StyleCustomProps) {
 					<div key={sector.getId()}>
 						<button
 							onClick={() => onActiveExpand(sector.getId())}
-							className="sticky top-0 z-10 bg-gray-25 dark:bg-zinc-800 px-2 py-1 border-b border-gray-300 dark:border-zinc-700 w-full"
+							className="sticky top-0 z-10 bg-gray-25 dark:bg-red-800 px-2 py-1 border-b border-gray-300 dark:border-zinc-700 w-full"
 						>
 							<div className="flex gap-2 w-full flex-wrap items-center">
 								<div className="text-left flex-1">

@@ -39,7 +39,7 @@ export default function InputCustomize(props: InputCustomizeProps) {
 				{props.suffix && props.listValue && (
 					<div className="flex items-center">
 						<button className="w-full text-left cursor-pointer rounded focus:outline-none focus-visible:ring-2 ring-violet-300 ring-opacity-80">
-							<div className="bg-white dark:bg-zinc-900 border rounded border-transparent overflow-auto px-0.5">
+							<div className="bg-red-700 dark:bg-zinc-900 border rounded border-transparent overflow-auto px-0.5">
 								<div className="flex flex-wrap items-center">
 									<Popover
 										content={
