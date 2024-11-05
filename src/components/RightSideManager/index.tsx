@@ -16,7 +16,7 @@ export default function RightSideManager({
 
 		>
 			<div
-				className="h-full overflow-y-auto scroll-view overflow-x-hidden ml-4 bg-[#fff] border border-[#c6c6c9] text-[#9CA3AF]"
+				className="h-full w-[278px] overflow-y-auto scroll-view overflow-x-hidden ml-4 bg-[#fff] border border-[#c6c6c9] text-[#9CA3AF]"
 
 
 			>
@@ -24,18 +24,30 @@ export default function RightSideManager({
 					<button
 						onClick={() => setActiveTab(0)}
 						className={
+							"flex-1 text-sm focus:outline-none focus-visible:ring-2 ring-violet-300 ring-opacity-80 border-b-2 px-4 py-2 border-gray-300 dark:border-zinc-700  "
+					}
+					>
+						General
+					</button>
+
+					<button
+						onClick={() => setActiveTab(0)}
+						className={
 							"flex-1 text-sm focus:outline-none focus-visible:ring-2 ring-violet-300 ring-opacity-80 border-b-2 px-4 py-2 border-gray-300 dark:border-zinc-700"
 					}
 					>
-						Styles
+						Style
 					</button>
+
+
+
 					<button
 						onClick={() => setActiveTab(1)}
 						className={
 							"flex-1 text-sm focus:outline-none focus-visible:ring-2 ring-violet-300 ring-opacity-80 border-b-2 px-4 py-2 border-gray-300 dark:border-zinc-700"	
 						}
 					>
-						Properties
+						Advanced
 					</button>
 				</div>
 				<div className="flex flex-col w-full">
