@@ -74,3 +74,4 @@ export default function StyleCustom({ sectors = [] }: StyleCustomProps) {
 		</div>
 	);
 }
+

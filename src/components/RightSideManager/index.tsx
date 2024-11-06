@@ -16,7 +16,7 @@ export default function RightSideManager({
 
 		>
 			<div
-				className="h-full w-[278px] overflow-y-auto scroll-view overflow-x-hidden ml-4 bg-[#fff]  border-[#c6c6c9] text-[#9CA3AF]"
+				className="h-full w-[278px] overflow-y-auto scroll-view overflow-x-hidden ml-4 bg-[#fff] text-[#9CA3AF]"
 
 
 			>
