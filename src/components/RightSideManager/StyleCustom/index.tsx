@@ -21,7 +21,7 @@ const SectorCollapse = memo(
 		<div key={sector.getId()}>
 			<button
 				onClick={toggleActive}
-				className="sticky top-0 z-10 bg-gray-25 dark:bg-zinc-800 px-2 py-1 border-b border-gray-300 dark:border-zinc-700 w-full"
+				className="sticky top-0 z-10 bg-white  px-2 py-1 border-b border-gray-300  w-full"
 			>
 				<div className="flex gap-2 w-full flex-wrap items-center">
 					<div className="text-left flex-1">
