@@ -1,156 +1,161 @@
 import { useEditor } from "@grapesjs/react";
 import React from "react";
 import type {
-	Property,
-	PropertyNumber,
-	PropertyComposite,
-	PropertyRadio,
-	PropertySelect,
-	PropertySlider,
+  Property,
+  PropertyNumber,
+  PropertyComposite,
+  PropertyRadio,
+  PropertySelect,
+  PropertySlider,
 } from "grapesjs";
 import InputCustomize from "./InputCustomize.tsx";
 import { FormControl, Select, MenuItem } from "@mui/material";
-import image1 from './images/align-bottom.png';
-import image2 from './images/align-bottom.png';
-import image3 from './images/align-bottom.png';
-import image4 from './images/align-bottom.png';
-import image5 from './images/align-bottom.png';
+
+// Import images
+import image1 from './images/text-align-left.png';
+import image2 from './images/text-align-center.png';
+import image3 from './images/text-align-right.png';  // Assuming different images
+import image4 from './images/download-alt.png';
+import image5 from './images/download-alt (1).png'; 
 
 type StylePropertyFieldProps = {
-	prop: Property | PropertyNumber | PropertyComposite | PropertyRadio | PropertySelect | PropertySlider;
+  prop: Property | PropertyNumber | PropertyComposite | PropertyRadio | PropertySelect | PropertySlider;
+  displayName?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export default function StylePropertyField({
-	prop,
-	...rest
+  prop,
+  displayName,
+  ...rest
 }: StylePropertyFieldProps) {
-	const editor = useEditor();
+  const editor = useEditor();
 
-	const handleChange = (value: string) => {
-		prop.upValue(value);
-	};
+  const handleChange = (value: string) => {
+    prop.upValue(value);
+  };
 
-	const onChange = (ev: React.ChangeEvent<{ value: unknown }>) => {
-		handleChange(ev.target.value as string);
-	};
+  const onChange = (ev: React.ChangeEvent<{ value: unknown }>) => {
+    handleChange(ev.target.value as string);
+  };
 
-	const handleStyleChange = (value: string) => {
-		handleChange(value);
-	};
+  const handleStyleChange = (value: string) => {
+    handleChange(value);
+  };
 
-	const type = prop.getType();
-	const defValue = prop.getDefaultValue();
-	const hasValue = prop.hasValue();
-	const value = prop.getValue();
-	const valueString = hasValue ? value : "";
+  const type = prop.getType();
+  const defValue = prop.getDefaultValue();
+  const hasValue = prop.hasValue();
+  const value = prop.getValue();
+  const valueString = hasValue ? value : "";
 
-	let inputToRender;
+  // Array of imported images for Typography
+  const typographyImages = [image1, image2, image3, image4, image5];
 
-	// Render input based on type
-	switch (type) {
-		case "radio": {
-			const radioProp = prop as PropertyRadio;
-			inputToRender = (
-				<div className="flex">
-					{radioProp?.getOptions().map((option) => (
-						<button
-							key={radioProp.getOptionId(option)}
-							className={`border w-[90px] h-[38px] p-2 flex justify-center items-center ${radioProp.getOptionId(option) === value ? "bg-gray-700" : ""
-								}`}
-							value={radioProp.getOptionId(option)}
-							onClick={() => handleStyleChange(radioProp.getOptionId(option))}
-						>
-							<div
-								style={{ width: "40px" }}
-								dangerouslySetInnerHTML={{
-									__html: radioProp.getOptionLabel(option),
-								}}
-							/>
-						</button>
-					))}
-				</div>
-			);
-			break;
-		}
+  let inputToRender;
 
-		case "select": {
-			const selectProp = prop as PropertySelect;
-			inputToRender = (
-				<FormControl fullWidth size="small">
-					<Select
-						style={{ border: "none" }}
-						value={value}
-						onChange={onChange}
-					>
-						{selectProp.getOptions().map((option) => (
-							<MenuItem
-								key={selectProp.getOptionId(option)}
-								value={selectProp.getOptionId(option)}
-							>
-								{selectProp.getOptionLabel(option)}
-							</MenuItem>
-						))}
-					</Select>
-				</FormControl>
-			);
-			break;
-		}
+  if (displayName === "Typography" && type === "radio") {
+    // Custom Typography UI with imported images
+    const radioProp = prop as PropertyRadio;
 
-		case "typography": {
-			const typographyProp = prop as PropertyRadio;
-			const typographyImages = [image1, image2, image3, image4, image5];
-			inputToRender = (
-				<div className="flex space-x-2">
-					{typographyProp.getOptions().map((option, index) => (
-						<button
-							key={typographyProp.getOptionId(option)}
-							className={`border w-[90px] h-[38px] p-2 flex justify-center items-center ${typographyProp.getOptionId(option) === value ? "bg-gray-700" : ""
-								}`}
-							value={typographyProp.getOptionId(option)}
-							onClick={() => handleStyleChange(typographyProp.getOptionId(option))}
-						>
-							<img
-								src={typographyImages[index]}
-								alt={typographyProp.getOptionLabel(option)}
-								className="w-full h-full object-contain"
-							/>
-						</button>
-					))}
-				</div>
-			);
-			break;
-		}
+    inputToRender = (
+      <div className="flex space-x-2">
+        {radioProp?.getOptions().map((option, index) => (
+          <button
+            key={radioProp.getOptionId(option)}
+            className={`border w-[40px] h-[38px] p-2 flex justify-center items-center ${
+              radioProp.getOptionId(option) === value ? "bg-gray-300" : ""
+            }`}
+            value={radioProp.getOptionId(option)}
+            onClick={() => handleStyleChange(radioProp.getOptionId(option))}
+          >
+            <img
+              src={typographyImages[index]}
+              alt={radioProp.getOptionLabel(option)}
+              className="w-full h-full object-contain"
+            />
+          </button>
+        ))}
+      </div>
+    );
+  } else {
+    // Render default input for other properties
+    switch (type) {
+      case "radio": {
+        const radioProp = prop as PropertyRadio;
+        inputToRender = (
+          <div className="flex">
+            {radioProp?.getOptions().map((option) => (
+              <button
+                key={radioProp.getOptionId(option)}
+                className={`border w-[90px] h-[38px] p-2 flex justify-center items-center ${
+                  radioProp.getOptionId(option) === value ? "bg-gray-700" : ""
+                }`}
+                value={radioProp.getOptionId(option)}
+                onClick={() => handleStyleChange(radioProp.getOptionId(option))}
+              >
+                <div
+                  style={{ width: "40px" }}
+                  dangerouslySetInnerHTML={{
+                    __html: radioProp.getOptionLabel(option),
+                  }}
+                />
+              </button>
+            ))}
+          </div>
+        );
+        break;
+      }
 
-		default:
-			// Fallback for other types (e.g., number, text) using InputCustomize
-			inputToRender = (
-				<InputCustomize
-					placeholder={defValue}
-					value={valueString}
-					onChange={onChange}
-					suffix={(prop as PropertyNumber)?.attributes?.unit}
-					listValue={(prop as PropertyNumber)?.attributes?.units}
-					onChangeSuffix={(value) => {
-						(prop as PropertyNumber).upUnit(value);
-					}}
-				/>
-			);
-			break;
-	}
+      case "select": {
+        const selectProp = prop as PropertySelect;
+        inputToRender = (
+          <FormControl fullWidth size="small">
+            <Select
+              style={{ border: "none" }}
+              value={value}
+              onChange={onChange}
+            >
+              {selectProp.getOptions().map((option) => (
+                <MenuItem
+                  key={selectProp.getOptionId(option)}
+                  value={selectProp.getOptionId(option)}
+                >
+                  {selectProp.getOptionLabel(option)}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        );
+        break;
+      }
 
-	return (
-		<div
-			{...rest}
-			className="flex justify-between gap-2 w-full"
-		>
-			{type !== "radio" && type !== "typography" && (
-				<p className="max-w-[95px] min-w-[95px] text-xs capitalize " style={{ fontFamily: 'Arial, sans-serif' }}>
-					{prop.getLabel()}
-				</p>
-			)}
-			{inputToRender}
-		</div>
-	);
+      default:
+        inputToRender = (
+          <InputCustomize
+            placeholder={defValue}
+            value={valueString}
+            onChange={onChange}
+            suffix={(prop as PropertyNumber)?.attributes?.unit}
+            listValue={(prop as PropertyNumber)?.attributes?.units}
+            onChangeSuffix={(value) => {
+              (prop as PropertyNumber).upUnit(value);
+            }}
+          />
+        );
+        break;
+    }
+  }
+
+  return (
+    <div {...rest} className="flex justify-between gap-2 w-full">
+      {type !== "radio" && (
+        <p className="max-w-[95px] min-w-[95px] text-xs capitalize" style={{ fontFamily: 'Arial, sans-serif' }}>
+          {prop.getLabel()}
+        </p>
+      )}
+      {inputToRender}
+    </div>
+  );
 }
 
 
