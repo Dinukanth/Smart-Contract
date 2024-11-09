@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import StyleCustom from "./StyleCustom/index.tsx";
+import GeneralCustom from './GeneralCustom/index.tsx';
 
 export default function RightSideManager({
 	styleProps,
@@ -31,7 +32,7 @@ export default function RightSideManager({
 					</button>
 
 					<button
-						onClick={() => setActiveTab(0)}
+						onClick={() => setActiveTab(1)}
 						className={
 							"flex-1 text-sm focus:outline-none focus-visible:ring-2 ring-violet-300 ring-opacity-80 border-b-2 px-4 py-2 border-gray-300 dark:border-zinc-700"
 					}
@@ -42,7 +43,7 @@ export default function RightSideManager({
 
 
 					<button
-						onClick={() => setActiveTab(1)}
+						onClick={() => setActiveTab(2)}
 						className={
 							"flex-1 text-sm focus:outline-none focus-visible:ring-2 ring-violet-300 ring-opacity-80 border-b-2 px-4 py-2 border-gray-300 dark:border-zinc-700"	
 						}
@@ -53,8 +54,14 @@ export default function RightSideManager({
 				<div className="flex flex-col w-full">
 					
 						<>
-							
-							<StyleCustom sectors={styleProps.sectors} />
+							{activeTab === 0 && (
+								<GeneralCustom />
+							)}
+
+							{activeTab === 1 && (
+								<StyleCustom sectors={styleProps.sectors} />								
+							)}
+
 						</>
 					
 				</div>

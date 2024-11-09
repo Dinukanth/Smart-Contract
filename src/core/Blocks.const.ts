@@ -181,11 +181,11 @@ export const PatientInformation_Block = [
             </svg>`,
     content: `
       <div class="flex justify-center"> <!-- Center the form on the page -->
-        <form class="space-y-4 text-left w-full max-w-md"> <!-- Restrict form width and keep text left-aligned -->
+        <form data-gjs-type="form-field" class="space-y-4 text-left w-full max-w-md"> <!-- Restrict form width and keep text left-aligned -->
           <!-- Gender Dropdown -->
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Gender</label>
-            <select class="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100">
+            <label data-gjs-type="label-field" class="block text-gray-700 font-medium mb-2">Gender</label>
+            <select data-gjs-type="select-field" class="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100">
               <option>Select gender</option>
               <option>Male</option>
               <option>Female</option>
@@ -195,25 +195,25 @@ export const PatientInformation_Block = [
   
           <!-- Age Input -->
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Age</label>
+            <label data-gjs-type="label-field" class="block text-gray-700 font-medium mb-2">Age</label>
             <input type="number" class="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100" placeholder="Enter patient age" />
           </div>
   
           <!-- Signs and Symptoms Textarea -->
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Signs and Symptoms</label>
+            <label data-gjs-type="label-field" class="block text-gray-700 font-medium mb-2">Signs and Symptoms</label>
             <textarea class="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100" rows="3" placeholder="Describe patient's signs and symptoms"></textarea>
           </div>
   
           <!-- Findings Textarea -->
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Findings</label>
+            <label data-gjs-type="label-field" class="block text-gray-700 font-medium mb-2">Findings</label>
             <textarea class="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100" rows="3" placeholder="Provide a description of your findings"></textarea>
           </div>
   
           <!-- Submit Button -->
           <div>
-            <button type="submit" class="w-full bg-black text-white font-medium py-2 rounded">Get Diagnoses</button>
+            <button data-gjs-type="button-field" type="submit" class="w-full bg-black text-white font-medium py-2 rounded">Get Diagnoses</button>
           </div>
         </form>
       </div>

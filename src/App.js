@@ -22,6 +22,7 @@ import RightSideManager from "./components/RightSideManager/index.tsx";
 import './App.css';
 import Navbar from "./File/Navbar.jsx";
 import Header from "./components/Header/Header.jsx";
+import Form from "./File/Form.ts";
 
 function App() {
   const containerRef = useRef(null);
@@ -96,7 +97,9 @@ function App() {
         grapesjs={grapesjs}
         grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
         options={gjsOptions}
-        plugins={[]}
+        plugins={[
+          Form
+        ]}
       >
         <WithEditor>
          <Header/>

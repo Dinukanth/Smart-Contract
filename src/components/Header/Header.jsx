@@ -61,7 +61,7 @@ const Header = () => {
                             ? styles.selectedIcon
                             : {}),
                         }}
-                        onClick={() => setSelectedDevice(device.id)}
+                        onClick={() => select(device.id)}
                         title={device.id}
                         alt={device.id}
                       />
@@ -115,7 +115,9 @@ const Header = () => {
 
         <div className="text-gray-500">Share</div>
 
-        <button className="bg-purple-500 text-white py-1 px-4 rounded-md">
+        <button className="bg-purple-500 text-white py-1 px-4 rounded-md" onClick={() => {
+          editor.Commands.run("core:preview");
+        }}>
           Preview
         </button>
         <img
