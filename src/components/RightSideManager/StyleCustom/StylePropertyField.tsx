@@ -9,14 +9,12 @@ import type {
   PropertySlider,
 } from "grapesjs";
 import InputCustomize from "./InputCustomize.tsx";
-import { FormControl, Select, MenuItem } from "@mui/material";
-
-// Import images
+import { FormControl, Select, MenuItem, TextField, InputAdornment } from "@mui/material";
 import image1 from './images/text-align-left.png';
 import image2 from './images/text-align-center.png';
-import image3 from './images/text-align-right.png';  // Assuming different images
+import image3 from './images/text-align-right.png';
 import image4 from './images/download-alt.png';
-import image5 from './images/download-alt (1).png'; 
+import image5 from './images/download-alt (1).png';
 
 type StylePropertyFieldProps = {
   prop: Property | PropertyNumber | PropertyComposite | PropertyRadio | PropertySelect | PropertySlider;
@@ -48,13 +46,11 @@ export default function StylePropertyField({
   const value = prop.getValue();
   const valueString = hasValue ? value : "";
 
-  // Array of imported images for Typography
   const typographyImages = [image1, image2, image3, image4, image5];
 
   let inputToRender;
 
   if (displayName === "Typography" && type === "radio") {
-    // Custom Typography UI with imported images
     const radioProp = prop as PropertyRadio;
 
     inputToRender = (
@@ -78,7 +74,6 @@ export default function StylePropertyField({
       </div>
     );
   } else {
-    // Render default input for other properties
     switch (type) {
       case "radio": {
         const radioProp = prop as PropertyRadio;
@@ -125,6 +120,36 @@ export default function StylePropertyField({
               ))}
             </Select>
           </FormControl>
+        );
+        break;
+      }
+
+      case "color": {
+        inputToRender = (
+          <TextField
+            fullWidth
+            placeholder={defValue}
+            value={valueString}
+            onChange={onChange}
+            size="small"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <div
+                    className="w-[15px] h-[15px] rounded-full border"
+                    style={{ backgroundColor: valueString || defValue }}
+                  >
+                    <input
+                      type="color"
+                      className="w-[15px] h-[15px] cursor-pointer opacity-0"
+                      value={valueString || defValue}
+                      onChange={(ev) => handleChange(ev.target.value)}
+                    />
+                  </div>
+                </InputAdornment>
+              ),
+            }}
+          />
         );
         break;
       }
