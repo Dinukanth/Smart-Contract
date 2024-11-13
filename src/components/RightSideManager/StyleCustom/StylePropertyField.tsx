@@ -154,6 +154,29 @@ export default function StylePropertyField({
         break;
       }
 
+      case "Line Height":
+  inputToRender = (
+    <TextField
+      fullWidth
+      placeholder="Auto"
+      value={valueString}
+      onChange={onChange}
+      size="small"
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <img
+              src={image1} // replace with your image variable or path
+              alt="Line Height icon"
+              className="w-[15px] h-[15px]"
+            />
+          </InputAdornment>
+        ),
+      }}
+    />
+  );
+  break;
+
       default:
         inputToRender = (
           <InputCustomize

@@ -3,6 +3,7 @@ export enum BlockCategory {
   ClinicalDocumentationBlock = "Clinical Documentation",
   EncounterRecordsBlock = "Encounter Records",
   OrderAndResultsBlock = "Order and Results",
+  
 }
 
 export const PatientInformation_Block = [
@@ -218,7 +219,112 @@ export const PatientInformation_Block = [
         </form>
       </div>
     `,
+  },
+
+  {
+    id: "OneColumnLayout",
+    label: "One Column Layout",
+    media: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><rect x="5" y="5" width="14" height="14"/></svg>`,
+    content: `
+      <div class="grid grid-cols-1 border border-green-500 p-4">
+        <div class="column border border-gray-300 relative p-4">
+          <span class="absolute top-2 left-2 bg-gray-700 text-white text-xs px-1 py-0.5 rounded">Column</span>
+          <div class="flex justify-center items-center h-full">
+            <button class="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white">+</button>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
+  {
+    id: "TwoColumnLayout",
+    label: "Two Column Layout",
+    media: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M5 5h6v14H5V5zm8 0h6v14h-6V5z"/></svg>`,
+    content: `
+      <div class="grid grid-cols-2 gap-4 border border-green-500 p-4">
+        <div class="column border border-gray-300 relative p-4">
+          <span class="absolute top-2 left-2 bg-gray-700 text-white text-xs px-1 py-0.5 rounded">Column</span>
+          <div class="flex justify-center items-center h-full">
+            <button class="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white">+</button>
+          </div>
+        </div>
+        <div class="column border border-gray-300 relative p-4">
+          <span class="absolute top-2 left-2 bg-gray-700 text-white text-xs px-1 py-0.5 rounded">Column</span>
+          <div class="flex justify-center items-center h-full">
+            <button class="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white">+</button>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
+  {
+    id: "ThreeColumnLayout",
+    label: "Three Column Layout",
+    media: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M5 5h4.67v14H5V5zm6.67 0h4.67v14h-4.67V5zm6.67 0H23v14h-4.67V5z"/></svg>`,
+    content: `
+      <div class="grid grid-cols-3 gap-4 border border-green-500 p-4">
+        <div class="column border border-gray-300 relative p-4">
+          <span class="absolute top-2 left-2 bg-gray-700 text-white text-xs px-1 py-0.5 rounded">Column</span>
+          <div class="flex justify-center items-center h-full">
+            <button class="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white">+</button>
+          </div>
+        </div>
+        <div class="column border border-gray-300 relative p-4">
+          <span class="absolute top-2 left-2 bg-gray-700 text-white text-xs px-1 py-0.5 rounded">Column</span>
+          <div class="flex justify-center items-center h-full">
+            <button class="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white">+</button>
+          </div>
+        </div>
+        <div class="column border border-gray-300 relative p-4">
+          <span class="absolute top-2 left-2 bg-gray-700 text-white text-xs px-1 py-0.5 rounded">Column</span>
+          <div class="flex justify-center items-center h-full">
+            <button class="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white">+</button>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+
+  {
+    id: "FourColumnLayout",
+    label: "Four Column Layout",
+    media: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M5 5h3.5v14H5V5zm5.5 0h3.5v14H10.5V5zm5.5 0h3.5v14h-3.5V5zm5.5 0H23v14h-3.5V5z"/></svg>`,
+    content: `
+      <div class="grid grid-cols-4 gap-4 border border-green-500 p-4">
+        <div class="column border border-gray-300 relative p-4">
+          <span class="absolute top-2 left-2 bg-gray-700 text-white text-xs px-1 py-0.5 rounded">Column</span>
+          <div class="flex justify-center items-center h-full">
+            <button class="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white">+</button>
+          </div>
+        </div>
+        <div class="column border border-gray-300 relative p-4">
+          <span class="absolute top-2 left-2 bg-gray-700 text-white text-xs px-1 py-0.5 rounded">Column</span>
+          <div class="flex justify-center items-center h-full">
+            <button class="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white">+</button>
+          </div>
+        </div>
+        <div class="column border border-gray-300 relative p-4">
+          <span class="absolute top-2 left-2 bg-gray-700 text-white text-xs px-1 py-0.5 rounded">Column</span>
+          <div class="flex justify-center items-center h-full">
+            <button class="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white">+</button>
+          </div>
+        </div>
+        <div class="column border border-gray-300 relative p-4">
+          <span class="absolute top-2 left-2 bg-gray-700 text-white text-xs px-1 py-0.5 rounded">Column</span>
+          <div class="flex justify-center items-center h-full">
+            <button class="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white">+</button>
+          </div>
+        </div>
+      </div>
+    `,
   }
+  
+  
+  
+  
+  
   
   
   
