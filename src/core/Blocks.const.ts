@@ -8,7 +8,7 @@ export enum BlockCategory {
 
 export const PatientInformation_Block = [
   {
-    id: "TextInput",
+    id: "textInput",
     label: "Text Input",
     media: `<svg
   xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,19 @@ export const PatientInformation_Block = [
   <path d="M3 3h18a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1zm0 2v14h18V5H3zm2 2h14v2H5V7zm0 4h10v2H5v-2zm0 4h14v2H5v-2z" />
 </svg>
 `,
-    content: `<input type="text" class="input-field bg-gray-100 border border-gray-300 rounded py-2 px-4" placeholder="Double click to edit" />`,
+    content: `<div class="flex flex-col space-y-2">
+  <div class="text-gray-700 font-medium text-sm">
+    Your Label Text
+  </div>
+  <input
+    id="text-input"
+    data-gjs-type="text-input"
+    type="text"
+    class="input-field bg-gray-100 border border-gray-300 rounded py-2 px-4"
+    placeholder="Double click to edit"
+  />
+</div>
+`,
   },
 
   {
@@ -37,11 +49,7 @@ export const PatientInformation_Block = [
 </svg>`,
     content: ` <input type="date" class="datepicker-field bg-gray-100 border border-gray-300 rounded py-2 px-4" />`,
   },
-  
 
-
-
-  
   {
     id: "Dropdown",
     label: "Dropdown",
@@ -101,7 +109,6 @@ export const PatientInformation_Block = [
       Double click to change text
     </button>`,
   },
-
 
   {
     id: "MultiLineText",
@@ -171,8 +178,6 @@ export const PatientInformation_Block = [
       </div>
     `,
   },
-
-
 
   {
     id: "PatientForm",
@@ -441,7 +446,7 @@ export const OrderAndResults_Block = [
   <path d="M3 3h18a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1zm0 2v14h18V5H3zm2 2h14v2H5V7zm0 4h10v2H5v-2zm0 4h14v2H5v-2z" />
 </svg>
 `,
-    content: `<input type="text" class="input-field bg-gray-100 border border-gray-300 rounded py-2 px-4" placeholder="Double click to edit" />`,
+    content: `<input data-gjs-type="textInput" type="text" class="input-field bg-gray-100 border border-gray-300 rounded py-2 px-4" placeholder="Double click to edit" />`,
   },
   {
     id: "Button",

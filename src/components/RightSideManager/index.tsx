@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import StyleCustom from "./StyleCustom/index.tsx";
 import GeneralCustom from './GeneralCustom/index.tsx';
+import PropertiesCustom from './PropertiesCustom.tsx';
 
 export default function RightSideManager({
 	styleProps,
@@ -55,7 +56,7 @@ export default function RightSideManager({
 					
 						<>
 							{activeTab === 0 && (
-								<GeneralCustom />
+								<PropertiesCustom traits={traitProps.traits} />
 							)}
 
 							{activeTab === 1 && (
