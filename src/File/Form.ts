@@ -1,4 +1,4 @@
-const Form = (editor: any, options: Record<string, unknown> = {}) => {
+const Form = (editor: any, opts: Record<string, unknown> = {}) => {
   const domComponents = editor.DomComponents;
 
   domComponents.addType("label-field", {
@@ -8,17 +8,25 @@ const Form = (editor: any, options: Record<string, unknown> = {}) => {
         badgable: false,
         hoverable: false,
         droppable: false,
-        selectable: false,
+	   traits: [
+          {
+            type: "place-holder",
+            label: "",
+            name:"Place Holder"
+          },
+	     ],
         toolbar: [],
       },
     },
     view: {
-	onRender() {
-		this.el.addEventListener("dblclick", () => {
-		  this.openModal();
-		});
-	   },
-	}
+	events: () => ({
+		dblclick: "onDblClick",
+	}),
+	onDblClick(ev: MouseEvent) {
+		ev?.stopPropagation();
+		opts.setShowQuickActions();
+	},
+},
   });
 
   domComponents.addType("form-field", {

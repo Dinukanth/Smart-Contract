@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useCallback, useState } from "react";
 import GjsEditor, {
   BlocksProvider,
   Canvas,
@@ -23,9 +23,21 @@ import './App.css';
 import Navbar from "./File/Navbar.jsx";
 import Header from "./components/Header/Header.jsx";
 import Form from "./File/Form.ts";
-
+import { traitManager } from "./components/RightSideManager/TraitManager.tsx";
+import { useOnClickOutside } from "usehooks-ts";
+import LoadOverrides from "./components/Overrides/index.tsx";
+import QuickAction from "./components/QuickAction/index.tsx";
+import TextInput from "./File/Textinput.ts";
+ 
 function App() {
+  const [showQuickActions, setShowQuickActions] = useState(false);
   const containerRef = useRef(null);
+
+  const closeQuickActions = useCallback(() => {
+		setShowQuickActions(false);
+	}, [setShowQuickActions]);
+
+	useOnClickOutside(containerRef, closeQuickActions);
 
   // Editor options for GrapesJS
   const gjsOptions = {
@@ -89,6 +101,19 @@ function App() {
       ],
       styles: [""],
     },
+    plugins:[LoadOverrides, TextInput],
+    pluginsOpts: {
+      [LoadOverrides.toString()]: {
+        setShowQuickActions: () => {
+          setShowQuickActions(true);
+        },
+      },
+      [TextInput.toString()]: {
+        setShowQuickActions: () => {
+          setShowQuickActions(true);
+        },
+      },
+    }
   };
 
   return (
@@ -97,9 +122,6 @@ function App() {
         grapesjs={grapesjs}
         grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
         options={gjsOptions}
-        plugins={[
-          Form
-        ]}
       >
         <WithEditor>
          <Header/>
@@ -113,6 +135,13 @@ function App() {
           </div>
           <div style={{ flex: 1 }} className="w-full">
             <div className="rounded-xl relative">
+            {showQuickActions ? (
+								<div ref={containerRef}>
+									<WithEditor>
+										<QuickAction />
+									</WithEditor>
+								</div>
+							) : null}
               <Canvas className="h-[calc(100%-72px)]" style={{ backgroundColor: "#f5f5f5" }}/>
             </div>
           </div>
