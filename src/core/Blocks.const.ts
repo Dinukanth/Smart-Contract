@@ -225,7 +225,6 @@ export const PatientInformation_Block = [
       </div>
     `,
   },
-<<<<<<< HEAD
 
   {
     id: "OneColumnLayout",
@@ -343,8 +342,6 @@ export const PatientInformation_Block = [
 
 
 
-=======
->>>>>>> c33d9e6 (Fixed issues)
 ];
 
 export const ClinicalDocumentation_Block = [
