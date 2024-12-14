@@ -3,7 +3,6 @@ export enum BlockCategory {
   ClinicalDocumentationBlock = "Clinical Documentation",
   EncounterRecordsBlock = "Encounter Records",
   OrderAndResultsBlock = "Order and Results",
-  
 }
 
 export const PatientInformation_Block = [
@@ -47,7 +46,12 @@ export const PatientInformation_Block = [
 >
   <path d="M7 10h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zM5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v14h14V6H5zm2-2h2V2h2v2h4V2h2v2h2v2H5V4h2z" />
 </svg>`,
-    content: ` <input type="date" class="datepicker-field bg-gray-100 border border-gray-300 rounded py-2 px-4" />`,
+    content: `<div class="flex flex-col space-y-2">
+  <div class="text-gray-700 font-medium text-sm">
+    Your Label Text
+  </div>
+   <input type="date" data-gjs-type="date-input" class="datepicker-field bg-gray-100 border border-gray-300 rounded py-2 px-4" />
+</div>`,
   },
 
   {
@@ -63,11 +67,16 @@ export const PatientInformation_Block = [
     <path d="M5 7h14v2H5zm0 4h14v2H5zm0 4h14v2H5z"/>
   </svg>`,
     content: `
-    <select class="dropdown-field bg-gray-100 border border-gray-300 rounded py-2 px-4">
+    <div class="flex flex-col space-y-2">
+  <div class="text-gray-700 font-medium text-sm">
+    Your Label Text
+  </div>
+    <select data-gjs-type="dropdown-input" class="dropdown-field bg-gray-100 border border-gray-300 rounded py-2 px-4">
       <option value="Option 1">Gender</option>
       <option value="Option 2">Male</option>
       <option value="Option 3">Female</option>
     </select>
+    </div>
   `,
   },
 
@@ -231,15 +240,71 @@ export const PatientInformation_Block = [
     label: "One Column Layout",
     media: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><rect x="5" y="5" width="14" height="14"/></svg>`,
     content: `
-      <div class="grid grid-cols-1 border border-green-500 p-4">
-        <div class="column border border-gray-300 relative p-4">
-          <span class="absolute top-2 left-2 bg-gray-700 text-white text-xs px-1 py-0.5 rounded">Column</span>
-          <div class="flex justify-center items-center h-full">
-            <button class="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white">+</button>
-          </div>
-        </div>
-      </div>
-    `,
+    <style>
+    #parent {
+      padding: 1%;
+      display: flex;
+      flex-grow:1;
+	    background-color: white;
+      padding-left: 10%;
+      padding-right: 10%;
+      flex-direction: row;
+      min-height: 595px;
+      overflow: auto;
+    }
+	  
+	#child {
+	    width: 100%;
+	    float: left;
+      min-height: 50vh;
+	    padding: 1%;
+      display: flex;
+      flex-direction: column;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+	}
+	  
+	@media (max-width: 768px) {
+		#parent {
+			flex-direction: column;
+			padding-left: 5%;
+			padding-right: 5%;
+		}
+	    #child {
+			width: 100%;
+			float: none; 
+	    }
+	  }
+
+  [data-gjs-type="emptyRow"]:empty {
+               text-decoration: none;
+               padding: 5px;
+          }
+
+          [data-gjs-type="emptyRow"]:empty:before {
+               background-color: #ddd;
+               color: #000;
+               font-size: 16px;
+               font-weight: bold;
+               font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+               height: 100%;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               min-height: 30px;
+               padding: 0 10px;
+               opacity: 0.3;
+               border-radius: 3px;
+               white-space: nowrap;
+               overflow: hidden;
+               text-overflow: ellipsis;
+               content: "DRAG ELEMENTS HERE";
+          }
+  </style>
+	<div id="parent">
+		<div data-gjs-type="emptyRow" id="child"></div>
+	</div>
+`,
   },
 
   {
@@ -324,24 +389,7 @@ export const PatientInformation_Block = [
         </div>
       </div>
     `,
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-
-
-
-  
-
-
-
+  },
 ];
 
 export const ClinicalDocumentation_Block = [
